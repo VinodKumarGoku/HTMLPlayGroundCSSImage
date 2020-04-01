@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../stylesheets/ImageMDragDropWithCanvasAndResizing.css">
+  <title></title>
+</head>
+
+<body>
+
+  <!-- Main Target Area  -->
+  <div ondragover="dragovertarget(event)" ondrop="imagedropevent(event)" height="500px">
+    <canvas id="mycanvas" width="500" height="300" ondblclick="activateresizebutton(event)" ondragstart="dragstartedcanvas(event)" draggable="true"></canvas>
+      <br>
+      <button type="button" name="button" id="resize_button">Resize the image</button><br>
+      <button type="button" name="button" id="increase_imagesize" onclick="increase_image(event)">Increase Image Size</button>
+      <button type="button" name="button" id="decrease_image_size" onclick="decrease_image(event)">Decrease Image Size</button>
+
+  </div>
+
+  <script src="../javascripts/ImageMDragDropWithCanvasAndResizing.js" charset="utf-8"></script>
+</body>
+
+</html>

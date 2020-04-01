@@ -1,0 +1,16 @@
+div.commoninline {
+  display: inline-block;
+}
+
+div.rightoptionsimages {
+  position: absolute;
+  right: 0;
+}
+
+
+img.optionalimages {
+  display: block;
+  height: 5em;
+  width: 5em;
+  margin: 1em;
+}

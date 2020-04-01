@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <<link rel="stylesheet" href="styling.css">
+    <title></title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var globalvar = true;
+
+    function changeimage() {
+      if (globalvar) {
+        document.getElementById("my_img").src = "../image_store/Part2.png";
+        globalvar = false;
+      } else {
+        globalvar = true;
+        document.getElementById("srcvalue").innerHtml = this.src;
+        src = "../image_store/Part1.jpg";
+      }
+    }
+
+    function changeimagetothis() {
+      //document.getElementById("srcvalue").innerHTML = this.getAttribute("src");
+      //document.write("Hello World");
+      document.getElementById("my_img").src = event.srcElement.src;
+      //alert(imagetoreplace);
+    }
+  </script>
+
+  <img id="my_img" height="400px" width="300px" src="../image_store/Part1.jpg" alt="Image not found" />
+  <img height="200px"  onclick="changeimagetothis()" width="200px" src="../image_store/Part2.png" alt="Image not found" />
+  <img height="200px" onclick="changeimagetothis()" width="200px" src="../image_store/Part3.png" alt="Image not found" />
+  <!-- <img height="200px" onclick="changeimagetothis()" width="200px" src="../image_store/Part3.png" alt="Image not found" />
+  <p id="srcvalue">Src Value Displayed here</p>
+     <button height="100px" type="button" onclick="changeimage()" name="button">Click me to replace the image</button> -->
+</body>
+
+</html>

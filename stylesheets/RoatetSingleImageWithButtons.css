@@ -1,0 +1,9 @@
+img {
+  height: 400px;
+  width: 300px;
+  /*transform: rotate(20deg); */
+}
+
+button {
+  display: none;
+}

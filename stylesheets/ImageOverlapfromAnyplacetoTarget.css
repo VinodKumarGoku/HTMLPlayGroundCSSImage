@@ -1,0 +1,14 @@
+div {
+  position: relative;
+}
+
+img {
+  display: inline;
+  margin: auto;
+  width: 40%;
+}
+
+#img2 {
+  position: absolute;
+  right: 0;
+}

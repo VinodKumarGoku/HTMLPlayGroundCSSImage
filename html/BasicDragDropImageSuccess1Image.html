@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../stylesheets/BasicDragDropImageSuccess1Image.css">
+  <title></title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var draggedelement;
+
+    function imagedragstart(event) {
+      console.log("DragStart Event started");
+      draggedelement = event.target;
+    }
+
+    function allowdragover(event) {
+      console.log("Dragging element over");
+      event.preventDefault();
+    }
+
+    function dropimage(event) {
+      event.preventDefault();
+      console.log("Drop event");
+
+      var clonenode = draggedelement.cloneNode(true);
+      event.target.parentNode.replaceChild(clonenode,event.target);
+    }
+
+
+  </script>
+  <div class="">
+    <div class="commonline">
+      <img class="commonimageproperties" ondrop="dropimage(event)" ondragover="allowdragover(event)" src="../image_store/Part2.png" alt="">
+    </div>
+    <div class="commonline">
+      <img class="commonimageproperties" ondragstart="imagedragstart(event)" border="10" src="../image_store/Part3.png" alt="">
+    </div>
+  </div>
+</body>
+
+</html>

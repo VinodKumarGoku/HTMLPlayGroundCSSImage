@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../stylesheets/FullImageReplaceStargey.css">
+  <title></title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function changeimagetothis() {
+      document.getElementById("my_img").src = event.srcElement.src;
+    }
+  </script>
+  <div class="">
+    <div class="commoninline">
+      <img id="my_img" src="../image_store/Part1.jpg" alt="" height="400px" width="200px">
+    </div>
+    <div class="commoninline rightoptionsimages" height="400px" width="60%">
+      <img class="optionalimages" onclick="changeimagetothis()" src="../image_store/Part2.png" alt="">
+      <img class="optionalimages" onclick="changeimagetothis()" src="../image_store/Part3.png" alt="">
+      <img class="optionalimages" onclick="changeimagetothis()" src="../image_store/Part7.png" alt="">
+      <img class="optionalimages" onclick="changeimagetothis()" src="../image_store/Part5.png" alt="">
+    </div>
+  </div>
+
+  <div class="">
+    <p>Final Para</p>
+  </div>
+</body>
+
+</html>

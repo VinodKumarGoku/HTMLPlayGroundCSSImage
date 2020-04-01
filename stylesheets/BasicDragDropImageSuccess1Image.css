@@ -1,0 +1,10 @@
+
+div.commonline {
+  display: inline-block;
+}
+
+img.commonimageproperties {
+  width: 20em;
+  height: 20em;
+  border: 0.3em solid blue;
+}

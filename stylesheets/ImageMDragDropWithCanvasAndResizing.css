@@ -1,0 +1,16 @@
+#mycanvas {
+  /*border: 2px solid lightblue;*/
+  position: absolute;
+  right: 0;
+  border: 2px solid lightblue;
+}
+
+div {
+  position: relative;
+  width: auto;
+  height: 600px;
+}
+ #resize_button, #increase_imagesize, #decrease_image_size {
+   display: none;
+   margin: 3px;
+ }

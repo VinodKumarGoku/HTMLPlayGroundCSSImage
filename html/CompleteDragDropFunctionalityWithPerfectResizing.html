@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../stylesheets/CompleteDragDropFunctionalityWithPerfectResizing.css">
+    <title></title>
+  </head>
+  <body>
+
+    <div>
+
+      <div id="mainimage" class="mainimagearea" ondragover="draggingover(event)" ondrop="dropimage(event)">
+        <img id="img1" src="../image_store/Part2.png" alt="Image Not Found" >
+        <button type="button" name="button" id="increase_imagesize" onclick="increase_imagesize(event)">Increase Size</button>
+        <button type="button" name="button" id="decrese_imagesize" onclick="decrease_imagesize(event)">Decrease Size</button>
+      </div>
+
+      <div class="optionsdivcontainer" style="display: inline;">
+        <img class="commonimageblock" src="../image_store/Part3.png" alt="Image Not Found" >
+        <img class="commonimageblock" src="../image_store/Part5.png" alt="Image Not Found" >
+        <img class="commonimageblock" src="../image_store/Part7.png" alt="Image Not Found" >
+      </div>
+
+    </div>
+
+    <script src="../javascripts/CompleteDragDropFunctionalityWithPerfectResizing.js" charset="utf-8"></script>
+  </body>
+</html>

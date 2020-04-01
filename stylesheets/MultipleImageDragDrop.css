@@ -1,0 +1,26 @@
+
+div.divinlining {
+  display: inline-block;
+}
+
+div.rightoptionsimages {
+  position: absolute;
+  right: 0;
+}
+
+img {
+  border: 5px solid blue;
+  margin: 5px;
+}
+
+img.imageblockdisplay {
+  display: block;
+  height: 10em;
+  width: 10em;
+}
+
+img.commonimageproperties {
+  width: 20em;
+  height: 20em;
+  border: 0.3em solid blue;
+}

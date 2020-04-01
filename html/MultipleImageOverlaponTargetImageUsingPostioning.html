@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../stylesheets/MultipleImageOverlaponTargetImageUsingPostioning.css">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="maindiv" ondragover="draggingover(event)" ondrop="dropimage(event)">
+
+      <div class="mainimagearea" ondragover="draggingover(event)" ondrop="dropimage(event)">
+        <img id="img1" src="../image_store/Part2.png" alt="Image Not Found" >
+      </div>
+
+      <div class="optionsdivcontainer mainimagearea">
+        <img id="img2" class="commonimageblock" src="../image_store/Part3.png" alt="Image Not Found" >
+        <img id="img3" class="commonimageblock" src="../image_store/Part5.png" alt="Image Not Found" >
+        <img id="img4" class="commonimageblock" src="../image_store/Part7.png" alt="Image Not Found" >
+      </div>
+
+    </div>
+
+      <!-- WARNING:  <img id="img2" src="../image_store/Part3.png" alt="Image Not Found"> -->
+
+
+    <script src="../javascripts/MultipleImageOverlaponTargetImageUsingPostioning.js" charset="utf-8"></script>
+  </body>
+</html>

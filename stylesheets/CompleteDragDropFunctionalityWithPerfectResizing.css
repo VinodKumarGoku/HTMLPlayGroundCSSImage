@@ -1,0 +1,23 @@
+/*div.maindiv {
+  position: relative;
+}*/
+
+div.mainimagearea {
+  display: inline;
+}
+
+div.optionsdivcontainer {
+  position: absolute;
+  right: 0;
+}
+
+img.commonimageblock {
+  display: block;
+  height: 10em;
+  width: 10em;
+  margin: 2px;
+}
+
+button {
+  display: none;
+}

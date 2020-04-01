@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../stylesheets/MultipleImageDragDrop.css">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="">
+      <!-- Replaceble image:  -->
+      <div class="divinlining">
+          <img id="mainimage" ondragover="draghoveroover(event)" ondrop="dropimagehere(event)" src="../image_store/Part1.jpg" height="400px" width="400px" alt="Image Not found">
+      </div>
+
+      <!-- Varios Image to replace:  -->
+      <div class="divinlining rightoptionsimages" >
+          <img class="imageblockdisplay" ondragstart="stardragging(event)"  src="../image_store/Part2.png" alt="Image Not found" draggable="true">
+          <img class="imageblockdisplay" src="../image_store/Part3.png" ondragstart="stardragging(event)" alt="Image Not found" draggable="true">
+          <img class="imageblockdisplay" ondragstart="stardragging(event)" draggable="true" src="../image_store/Part5.png" alt="Image Not found">
+      </div>
+
+    </div>
+
+    <script src="../javascripts/MultipleImageDragDrop.js" charset="utf-8"></script>
+
+  </body>
+</html>
