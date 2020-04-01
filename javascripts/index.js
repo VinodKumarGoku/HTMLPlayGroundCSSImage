@@ -11,7 +11,6 @@ for(image_number = 0;image_number < optionimageslist.length;image_number++ )
   optionimageslist[image_number].draggable = true;
   optionimageslist[image_number].addEventListener('dragstart',dragstarted);
   optionimageslist[image_number].addEventListener('mousemove',getcoordinates);
-  //optionimageslist[image_number].addEventListener('ondblclick',display_sizing_buttons);
   optionimageslist[image_number].removeEventListener('drop',dropimage);
   optionimageslist[image_number].removeEventListener('dragover',draggingover);
 }
@@ -20,9 +19,24 @@ for(image_number = 0;image_number < optionimageslist.length;image_number++ )
 // Resizing the Image aspects
 var selected_image_for_scaling;
 var rotate_image_id;
+
+function highlight_border() {
+  var current_rotating_image = document.getElementById(rotate_image_id);
+  console.log(current_rotating_image.style.border);
+  if(!current_rotating_image.style.border || current_rotating_image.style.border == 'none')
+  {
+    current_rotating_image.style.border = '2px solid lightblue';
+  }
+  else {
+    current_rotating_image.style.border = 'none';
+  }
+}
+
 function display_sizing_buttons(event) {
   selected_image_for_scaling = event.target.id;
   rotate_image_id = event.target.id;
+  highlight_border();
+
   //console.log("The selected element id is " + selected_image_for_scaling);
   var increase_image = document.getElementById("increase_imagesize");
   var decrease_image = document.getElementById("decrese_imagesize");
@@ -124,7 +138,7 @@ function draggingover(event) {
 
 
 // Rotate Image section All Cod here
-var current_rotated_value = 0;
+var current_rotated_value = {};
 function activate_rotatebutton(image_id) {
   console.log("Image Button Rotate Activate " + image_id);
   rotate_image_id = image_id;
@@ -145,26 +159,39 @@ function activate_rotatebutton(image_id) {
 
 function rotate_right(event) {
   var rotate_image =  document.getElementById(rotate_image_id);
-  //console.log(rotate_image + " and its id " + rotate_image_id);
-  current_rotated_value = current_rotated_value + 5;
-  if(current_rotated_value > 360)
+  var imageid_to_degree_mapping = 'image' + rotate_image_id;
+
+  if(current_rotated_value[imageid_to_degree_mapping] == undefined)
   {
-    current_rotated_value = 5;
+    current_rotated_value[imageid_to_degree_mapping] = 0;
   }
-  var current_rotated_value_string = "rotate(" + current_rotated_value + 'deg)';
+  current_rotated_value[imageid_to_degree_mapping] = current_rotated_value[imageid_to_degree_mapping] + 5;
+  if(current_rotated_value[imageid_to_degree_mapping] > 360)
+  {
+    current_rotated_value[imageid_to_degree_mapping] = 5;
+  }
+  var current_rotated_value_string = "rotate(" + current_rotated_value[imageid_to_degree_mapping] + 'deg)';
   //console.log(current_rotated_value_string);
   rotate_image.style.transform = current_rotated_value_string;
 }
 
 function rotate_left(event) {
   var rotate_image =  document.getElementById(rotate_image_id);
-  //console.log(current_rotated_value);
-  current_rotated_value = current_rotated_value - 5;
-  if(current_rotated_value < -360)
+  console.log(rotate_image);
+  var imageid_to_degree_mapping = 'image' + rotate_image_id;
+
+  if(current_rotated_value[imageid_to_degree_mapping] == undefined)
   {
-    current_rotated_value = -5;
+    current_rotated_value[imageid_to_degree_mapping] = 0;
   }
-  var current_rotated_value_string = "rotate(" + current_rotated_value + 'deg)';
+
+  current_rotated_value[imageid_to_degree_mapping] = current_rotated_value[imageid_to_degree_mapping] - 5;
+  if(current_rotated_value[imageid_to_degree_mapping] < -360)
+  {
+    current_rotated_value[imageid_to_degree_mapping] = -5;
+  }
+  var current_rotated_value_string = "rotate(" + current_rotated_value[imageid_to_degree_mapping] + 'deg)';
+
   rotate_image.style.transform = current_rotated_value_string;
 }
 
