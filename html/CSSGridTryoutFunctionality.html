@@ -11,7 +11,7 @@
   <title></title>
 </head>
 
-<body>
+<body onload="initialize_properties_of_image_elements(event)">
 
   <div class="grid-container">
 
@@ -25,54 +25,36 @@
 
     <div class="options-for-editing-the-image commonstyling">
       <!-- Options of editing the image -->
-        <span class="glyphicon glyphicon-resize-small"></span>
-        <span class="glyphicon glyphicon-resize-full"></span>
-        <span class="fa fa-rotate-left" ></span>
-        <span class="fa fa-rotate-right" ></span>
-        <span class="glyphicon glyphicon-arrow-left"></span>
-        <span class="glyphicon glyphicon-arrow-right"></span>
-        <span class="glyphicon glyphicon-arrow-up"></span>
-        <span class="glyphicon glyphicon-arrow-down"></span>
+        <span class="glyphicon glyphicon-resize-small" data-toggle="tooltip" title="Reduce Size" id="reduce_size_glyphicon"></span>
+        <span class="glyphicon glyphicon-resize-full" data-toggle="tooltip" title="Increase Size" id="increase_size_glyphicon"></span>
+        <span class="fa fa-rotate-left" data-toggle="tooltip" title="Rotate Left" id="rotate_left_glyphicon"></span>
+        <span class="fa fa-rotate-right" data-toggle="tooltip" title="Rotate Right" id="rotate_right_glyphicon"></span>
+        <span class="glyphicon glyphicon-arrow-left" data-toggle="tooltip" title="Move Left" id="move_left_glyphicon"></span>
+        <span class="glyphicon glyphicon-arrow-right" data-toggle="tooltip" title="Move Right" id="move_right_glyphicon"></span>
+        <span class="glyphicon glyphicon-arrow-up" data-toggle="tooltip" title="Move Up" id="move_up_glyphicon"></span>
+        <span class="glyphicon glyphicon-arrow-down" data-toggle="tooltip" title="Move Down" id="move_down_glyphicon"></span>
 
     </div>
 
-    <div class="main-target-image commonstyling">
-      <!-- Main Traget Image
-      <img src="../image_store/Part1.jpg" alt="Image Not Found" height="300px" width="200px" class="target-image"> -->
-      <img src="../image_store/MainTarget2.png" width="400px" height="400px" alt="Image Not Found" class="target-image">
+    <div class="main-target-image commonstyling" id="mainimage">
+      <!-- Main Traget Image -->
+      <img src="../image_store/MainTarget2.png" width="400px" height="400px" alt="Image Not Found" class="target-image" >
     </div>
 
     <div class="image-options-to-choose commonstyling">
       <!--  Image Options to Choose from -->
-      <div style="width: 800px; height: 200px;" class="inner-div-option-image">
+      <div style="width: 400px; height: 200px;" class="inner-div-option-image" onload="initialize_properties_of_image_elements(event)">
 
-        <img src="../image_store/Web1.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Web2.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Web3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Web4.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Web5.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Web6.png" width="100px" height="100px" alt="bbc news special" />
-        <!-- WARNING:
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        <img src="../image_store/Part3.png" width="100px" height="100px" alt="bbc news special" />
-        -->
+        <img src="../image_store/Web1.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class"/>
+        <img src="../image_store/Web2.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class"/>
+        <img src="../image_store/Web3.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class"/>
+        <img src="../image_store/Web4.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class"/>
+        <img src="../image_store/Web5.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class"/>
+        <img src="../image_store/Web6.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class"/>
+
       </div>
     </div>
-
+    <script src="../javascripts/CSSGridTryoutFunctionality.js" charset="utf-8"></script>
 </body>
 
 </html>
