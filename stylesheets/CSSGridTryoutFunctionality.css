@@ -1,9 +1,11 @@
 .grid-container {
   display: grid;
-  grid-template-columns: minmax(min-content, min-content) 4fr 7fr;
-  /* grid-template-rows: */
-  /*-color: #2196F3; */
+  grid-template-columns: minmax(min-content, 1fr) 6fr 10fr;
   padding: 10px;
+}
+
+.common_glyphicon {
+  font-size: 0.5em;
 }
 
 .commonstyling {

@@ -8,6 +8,9 @@ const move_right_glyphicon = document.getElementById("move_right_glyphicon");
 const move_up_glyphicon = document.getElementById("move_up_glyphicon");
 const move_down_glyphicon = document.getElementById("move_down_glyphicon");
 const delete_selected_item_glyphicon = document.getElementById("delete_selected_item");
+const resize_image_vertical_glyphicon = document.getElementById("resize_image_vertical");
+const resize_image_horizontal_glyphicon = document.getElementById("resize_image_horizontal");
+const save_complete_design_glyphicon = document.getElementById("save_complete_design");
 
 
 
@@ -18,6 +21,18 @@ const delete_selected_item_glyphicon = document.getElementById("delete_selected_
 function initialize_properties_of_image_elements(event) {
   //console.log("Onload Initialised");
   // Initialising for optional images
+  initialise_optional_images(event);
+
+  // Initialising for main target images
+  initialise_main_target_image(event);
+
+  // Initialising Gyphicons buttons with event listeners
+  initialisation_glyphicons(event);
+
+}
+
+// Refactored fucntion of onload initialisations
+function initialise_optional_images(event) {
   var optional_images = document.getElementsByClassName("option-image-class");
   var iterator;
   for (iterator = 0; iterator < optional_images.length; iterator++) {
@@ -25,13 +40,16 @@ function initialize_properties_of_image_elements(event) {
     optional_images[iterator].addEventListener('dragstart', option_image_drag_started);
     optional_images[iterator].addEventListener('dblclick', select_optional_image_draw_border);
   }
+}
 
-  // Initialising for main target images
+// Refactored code for initialisation of main target image
+function initialise_main_target_image(event) {
   var main_target_image = document.getElementsByClassName("main-target-image");
   main_target_image[0].addEventListener('drop', drop_optional_image, true);
   main_target_image[0].addEventListener('dragover', drag_over_optional_image, true);
+}
 
-  // Initialising Gyphicons buttons with event listeners
+function initialisation_glyphicons(event) {
   reduce_size_glyphicon.addEventListener('click', reduce_image_size, true);
   increase_size_glyphicon.addEventListener('click', increase_image_size, true);
   rotate_left_glyphicon.addEventListener('click', rotate_left_image, true);
@@ -41,6 +59,9 @@ function initialize_properties_of_image_elements(event) {
   move_down_glyphicon.addEventListener('click', move_down_image, true);
   move_right_glyphicon.addEventListener('click', move_right_image, true);
   delete_selected_item_glyphicon.addEventListener('click', delete_selected_item, true);
+  resize_image_vertical_glyphicon.addEventListener('click', resize_image_vertically, true);
+  resize_image_horizontal_glyphicon.addEventListener('click', resize_image_horizontally, true);
+  save_complete_design_glyphicon.addEventListener('click', save_completed_design, true);
 }
 
 // This function is called on the event of image drag has been started
@@ -131,7 +152,7 @@ function reduce_image_size(event) {
 // Increasing the size of the image
 function increase_image_size(event) {
   event.preventDefault();
-  console.log("Image Size Increase Activated for element " + current_selected_element_id);
+  console.log("Image Size Increase Activated for element ");
 
   var current_selected_element = document.getElementById(current_selected_element_id.toString());
 
@@ -216,6 +237,7 @@ function move_up_image(event) {
 
   var current_element_coordinates = current_selected_element.getBoundingClientRect();
 
+  console.log(current_element_coordinates.top + " and " + current_selected_element.style.top);
   if (current_element_coordinates.top > 10) {
     current_selected_element.style.top = (current_element_coordinates.top - 5).toString() + 'px';
   }
@@ -226,12 +248,16 @@ function move_down_image(event) {
   event.preventDefault();
   console.log("Image Moved Towards Down Activated");
 
+
   var current_selected_element = document.getElementById(current_selected_element_id);
 
   var current_element_coordinates = current_selected_element.getBoundingClientRect();
 
   if (current_element_coordinates.top < 500) {
-    current_selected_element.style.top = (current_element_coordinates.top + 5).toString() + 'px';
+    var improvement_counter = Math.ceil(current_element_coordinates.top) + 20;
+    console.log(improvement_counter);
+    current_selected_element.style.top = (improvement_counter).toString() + 'px';
+    //improvement_counter = improvement_counter + 5;
   }
 }
 
@@ -245,7 +271,7 @@ function move_right_image(event) {
   var current_element_coordinates = current_selected_element.getBoundingClientRect();
 
   if (current_element_coordinates.left < 500) {
-    current_selected_element.style.left = (current_element_coordinates.left + 5).toString() + 'px';
+    current_selected_element.style.left = (current_element_coordinates.left + 30).toString() + 'px';
   }
 }
 
@@ -260,4 +286,26 @@ function delete_selected_item(event) {
   } catch (error) {
     console.log(error.message);
   }
+}
+
+// Resizing the image vertically
+function resize_image_vertically(event) {
+  console.log("Resizing the image Vertically");
+
+  var current_selected_element = document.getElementById(current_selected_element_id);
+  current_selected_element.style.height = (current_selected_element.height + 10).toString() + 'px';
+}
+
+// Resizing image horizontally
+function resize_image_horizontally(event) {
+  console.log("Resing image Horizontally");
+
+  var current_selected_element = document.getElementById(current_selected_element_id);
+  current_selected_element.style.width = (current_selected_element.width + 10).toString() + 'px';
+}
+
+// Save the design and exit
+function save_completed_design(event) {
+  var current_selected_element = document.getElementById(current_selected_element_id);
+  current_selected_element.style.border = 'none';
 }
