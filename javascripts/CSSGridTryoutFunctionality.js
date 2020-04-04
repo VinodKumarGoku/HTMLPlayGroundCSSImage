@@ -100,7 +100,9 @@ function select_optional_image_draw_border(event) {
     if (current_selected_element_id != prev_selected_element_id) {
       if (prev_selected_element_id != 0) {
         var prev_selected_element = document.getElementById(prev_selected_element_id.toString());
-        prev_selected_element.style.border = 'none';
+        if (prev_selected_element) {
+          prev_selected_element.style.border = 'none';
+        }
       }
 
       prev_selected_element_id = current_selected_element_id;
@@ -144,15 +146,53 @@ function increase_image_size(event) {
 }
 
 // Rotating the image towards the left
-function rotate_left_image(event) {
-  event.preventDefault();
-  console.log("Image Rotate Left Activated");
-}
-
-// Rotating the image towards the right
+var current_rotated_value = {};
 function rotate_right_image(event) {
   event.preventDefault();
   console.log("Image Rotate Right Activated");
+
+  var current_selected_element = document.getElementById(current_selected_element_id.toString());
+
+  var current_selected_element =  document.getElementById(current_selected_element_id);
+  var imageid_to_degree_mapping = 'image' + current_selected_element_id;
+
+  if(current_rotated_value[imageid_to_degree_mapping] == undefined)
+  {
+    current_rotated_value[imageid_to_degree_mapping] = 0;
+  }
+  current_rotated_value[imageid_to_degree_mapping] = current_rotated_value[imageid_to_degree_mapping] + 5;
+  if(current_rotated_value[imageid_to_degree_mapping] > 360)
+  {
+    current_rotated_value[imageid_to_degree_mapping] = 5;
+  }
+  var current_rotated_value_string = "rotate(" + current_rotated_value[imageid_to_degree_mapping] + 'deg)';
+  //console.log(current_rotated_value_string);
+  current_selected_element.style.transform = current_rotated_value_string;
+
+}
+
+// Rotating the image towards the right
+function rotate_left_image(event) {
+  event.preventDefault();
+  console.log("Image Rotate Left Activated");
+
+  var current_selected_element = document.getElementById(current_selected_element_id.toString());
+
+  var current_selected_element =  document.getElementById(current_selected_element_id);
+  var imageid_to_degree_mapping = 'image' + current_selected_element_id;
+
+  if(current_rotated_value[imageid_to_degree_mapping] == undefined)
+  {
+    current_rotated_value[imageid_to_degree_mapping] = 0;
+  }
+  current_rotated_value[imageid_to_degree_mapping] = current_rotated_value[imageid_to_degree_mapping] - 5;
+  if(current_rotated_value[imageid_to_degree_mapping] < -360)
+  {
+    current_rotated_value[imageid_to_degree_mapping] = -5;
+  }
+  var current_rotated_value_string = "rotate(" + current_rotated_value[imageid_to_degree_mapping] + 'deg)';
+  //console.log(current_rotated_value_string);
+  current_selected_element.style.transform = current_rotated_value_string;
 }
 
 // Image to be moved towards left
@@ -183,16 +223,11 @@ function move_right_image(event) {
 function delete_selected_item(event) {
   event.preventDefault();
   console.log("Element deleted from the section");
-/*
-
-  var current_selected_element = document.getElementById(current_selected_element_id.toString());
 
   try {
-    console.log(current_selected_element.height + " and " + current_selected_element.height / 0.9);
-
-    current_selected_element.style.height = Math.ceil(current_selected_element.height / 0.9).toString() + 'px';
-    current_selected_element.style.width = Math.ceil(current_selected_element.width / 0.9).toString() + 'px';
+    var delete_element = document.getElementById(current_selected_element_id);
+    delete_element.parentNode.removeChild(delete_element);
   } catch (error) {
-    console.log(error.message + " and " + current_selected_element);
-  } */
+    console.log(error.message);
+  }
 }
