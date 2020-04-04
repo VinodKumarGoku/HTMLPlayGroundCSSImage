@@ -147,22 +147,21 @@ function increase_image_size(event) {
 
 // Rotating the image towards the left
 var current_rotated_value = {};
+
 function rotate_right_image(event) {
   event.preventDefault();
   console.log("Image Rotate Right Activated");
 
   var current_selected_element = document.getElementById(current_selected_element_id.toString());
 
-  var current_selected_element =  document.getElementById(current_selected_element_id);
+  var current_selected_element = document.getElementById(current_selected_element_id);
   var imageid_to_degree_mapping = 'image' + current_selected_element_id;
 
-  if(current_rotated_value[imageid_to_degree_mapping] == undefined)
-  {
+  if (current_rotated_value[imageid_to_degree_mapping] == undefined) {
     current_rotated_value[imageid_to_degree_mapping] = 0;
   }
   current_rotated_value[imageid_to_degree_mapping] = current_rotated_value[imageid_to_degree_mapping] + 5;
-  if(current_rotated_value[imageid_to_degree_mapping] > 360)
-  {
+  if (current_rotated_value[imageid_to_degree_mapping] > 360) {
     current_rotated_value[imageid_to_degree_mapping] = 5;
   }
   var current_rotated_value_string = "rotate(" + current_rotated_value[imageid_to_degree_mapping] + 'deg)';
@@ -178,16 +177,14 @@ function rotate_left_image(event) {
 
   var current_selected_element = document.getElementById(current_selected_element_id.toString());
 
-  var current_selected_element =  document.getElementById(current_selected_element_id);
+  var current_selected_element = document.getElementById(current_selected_element_id);
   var imageid_to_degree_mapping = 'image' + current_selected_element_id;
 
-  if(current_rotated_value[imageid_to_degree_mapping] == undefined)
-  {
+  if (current_rotated_value[imageid_to_degree_mapping] == undefined) {
     current_rotated_value[imageid_to_degree_mapping] = 0;
   }
   current_rotated_value[imageid_to_degree_mapping] = current_rotated_value[imageid_to_degree_mapping] - 5;
-  if(current_rotated_value[imageid_to_degree_mapping] < -360)
-  {
+  if (current_rotated_value[imageid_to_degree_mapping] < -360) {
     current_rotated_value[imageid_to_degree_mapping] = -5;
   }
   var current_rotated_value_string = "rotate(" + current_rotated_value[imageid_to_degree_mapping] + 'deg)';
@@ -199,24 +196,57 @@ function rotate_left_image(event) {
 function move_left_image(event) {
   event.preventDefault();
   console.log("Image Moved Towards Left Activated");
+
+  var current_selected_element = document.getElementById(current_selected_element_id);
+
+  var current_element_coordinates = current_selected_element.getBoundingClientRect();
+
+  if (current_element_coordinates.left > 10) {
+    current_selected_element.style.left = (current_element_coordinates.left - 5).toString() + 'px';
+  }
+
 }
 
 // Image to be moved towards Up
 function move_up_image(event) {
   event.preventDefault();
   console.log("Image Moved Towards Up Activated");
+
+  var current_selected_element = document.getElementById(current_selected_element_id);
+
+  var current_element_coordinates = current_selected_element.getBoundingClientRect();
+
+  if (current_element_coordinates.top > 10) {
+    current_selected_element.style.top = (current_element_coordinates.top - 5).toString() + 'px';
+  }
 }
 
 // Image to moved towards down
 function move_down_image(event) {
   event.preventDefault();
   console.log("Image Moved Towards Down Activated");
+
+  var current_selected_element = document.getElementById(current_selected_element_id);
+
+  var current_element_coordinates = current_selected_element.getBoundingClientRect();
+
+  if (current_element_coordinates.top < 500) {
+    current_selected_element.style.top = (current_element_coordinates.top + 5).toString() + 'px';
+  }
 }
 
 // Image to moved towards right
 function move_right_image(event) {
   event.preventDefault();
   console.log("Image Moved Towards Right Activated");
+
+  var current_selected_element = document.getElementById(current_selected_element_id);
+
+  var current_element_coordinates = current_selected_element.getBoundingClientRect();
+
+  if (current_element_coordinates.left < 500) {
+    current_selected_element.style.left = (current_element_coordinates.left + 5).toString() + 'px';
+  }
 }
 
 // Deleting a selected item from the main target image
