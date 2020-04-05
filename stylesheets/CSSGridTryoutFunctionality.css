@@ -1,6 +1,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: minmax(min-content, 1fr) 6fr 10fr;
+  grid-template-rows: 1fr 1fr 5fr;
   padding: 10px;
 }
 
