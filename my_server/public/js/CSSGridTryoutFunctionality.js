@@ -11,6 +11,17 @@ const resize_image_vertical_glyphicon = document.getElementById("resize_image_ve
 const resize_image_horizontal_glyphicon = document.getElementById("resize_image_horizontal");
 const save_complete_design_glyphicon = document.getElementById("save_complete_design");
 
+const div_contianer_id_to_url_mapping = [
+        'main_category_div_element',
+        'sub_category_image_file_list',
+        'optinal_image_section'
+      ];
+const url_fetch_address = [
+        '/main_image_file_list', 
+        '/sub_category_image_file_list',
+        '/sub_category_image_file_list'
+      ];
+
 
 
 // Make all elements with class option-image-class draggable
@@ -42,13 +53,7 @@ function initialize_properties_of_image_elements(event) {
 function initialisation_all_dyamic_content(event) {
   console.log("Initailising All Dynamic Content From Server");
 
-  var div_contianer_id_to_url_mapping = 
-      [
-        'main_category_div_element', 'sub_category_image_file_list'
-      ];
-  var url_fetch_address = ['/main_image_file_list', '/sub_category_image_file_list'];
   retrieve_dynamic_content(event, div_contianer_id_to_url_mapping, url_fetch_address);
-  
 }
 
 

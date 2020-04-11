@@ -1,22 +1,8 @@
 .grid-container {
   display: grid;
   grid-template-columns: minmax(min-content, 1fr) 6fr 10fr;
-  grid-template-rows: 1fr 1fr 5fr;
+  grid-template-rows: 1fr 1fr 2fr;
   padding: 10px;
-}
-
-.common_glyphicon {
-  font-size: 0.5em;
-}
-
-.commonstyling {
-  //background-color: rgba(125, 125, 125, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  font-size: 30px;
-  /* text-align: center; */
-  overflow: auto;
-  margin: 2px;
 }
 
 .main-category-of-elements {
@@ -30,11 +16,30 @@
 .options-for-editing-the-image {
   grid-area: 2/1/4/2;
   max-width: 100%;
+  max-height: 100%;
 }
 
 .main-target-image {
   grid-area: 2/2/4/3;
 }
+
+.image-options-to-choose {
+  grid-area: 3/3/4/3;
+}
+
+
+.common_glyphicon {
+  font-size: 0.5em;
+}
+
+.commonstyling {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 30px;
+  overflow: auto;
+  margin: 2px;
+}
+
 
 button {
   max-width: 100%;
@@ -44,26 +49,8 @@ img {
   max-width: 100%;
 }
 
-/*
-img.target-image {
-  max-height: 100%;
-}*/
-
-.option-image-elements {
-  height: 5em;
-  width: 5em;
-  display: inline-block;
-  border: 2px solid lightblue;
-}
-
-.image-options-to-choose {
-  overflow: auto;
-}
 
 .button-operations {
   overflow: auto;
 }
 
-.option-image-class {
-
-}

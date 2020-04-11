@@ -2,12 +2,15 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
+
+// Server Listening Port Value 
+const port = 38877;
+
+// Response Data JSon to send to client
 var response_json_data = [];
 
 
 app.use(express.static(path.join(__dirname, 'public')))
-
-const port = 1804;
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + '/CSSGridTryoutFunctionality.html')
@@ -26,7 +29,7 @@ app.get('/main_image_file_list', function(req,res){
   
   response_json_data = [];
   read_directory_recursively(path.join(__dirname,'public'), "MainImage");
-  console.log(response_json_data);
+  //console.log(response_json_data);
   
   res.send(response_json_data);
 })
@@ -36,7 +39,7 @@ app.get('/sub_category_image_file_list', function(req,res){
   
   response_json_data = [];
   read_directory_recursively(path.join(__dirname,'public'), "");
-  console.log(response_json_data);
+  //console.log(response_json_data);
   res.send(response_json_data);
 })
 
@@ -68,45 +71,11 @@ function read_directory_recursively(directoryPath, pattern_to_fetch) {
   });
 }
 
-
+// Node JS Server Listening on Designated Port
 app.listen(port, function(req, res) {
   console.log("Server Started");
 })
 
-function read_contents_of_directory(directoryPath) {
-
-  fs.readdirSync(directoryPath, function(err, files) {
-    //handling error
-    if (err) {
-      //return console.log('Unable to scan directory: ' + err);
-    }
-
-    if (files) {
-      //listing all files using forEach
-      files.forEach(function(file) {
-        // Do whatever you want to do with the file
-        fs.statSync(path.join(directoryPath, file), function(err, stats) {
-          
-          var file_name_to_string = file.toString();
-          if (stats.isFile() && file_name_to_string.match(/MainImage\.jpg/g))
-          {
-            //console.log(file + ' and its path is ' + directoryPath + '\\' + file);
-            var common_pattern_remove = 'C:\\Users\\svkumar\\github\\my_server\\public';
-            console.log((directoryPath + '\\' + file).replace(common_pattern_remove,''));
-            response_json_data.push((directoryPath + '\\' + file).replace(common_pattern_remove,''));
-            
-          }
-          //console.log(stats);
-          if (stats.isDirectory())
-            read_contents_of_directory(path.join(directoryPath, file));
-
-        });
-      });
-      //console.log("Final json list " + response_json_data);
-      
-    }
-  });
-}
 
 
 
