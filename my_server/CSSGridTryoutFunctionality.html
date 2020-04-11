@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- All Stylesheets references over here -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/CSSGridTryoutFunctionality.css">
+
+  <!-- All javascript references over here -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="/js/CSSGridTryoutFunctionality.js" charset="utf-8"></script>
+  <script src="/js/ExternalAPICalls.js"></script>
+
+  <title></title>
+</head>
+
+<body onload="initialize_properties_of_image_elements(event)">
+
+  <div class="grid-container">
+
+    <div class="main-category-of-elements commonstyling">
+      <!-- Main Category of images goes here  -->
+      <div style="width: 2000px; height: 100px; margin:3px;" class="inner-div-option-image" id="main_category_div_element">
+      <!-- All Contents Over Here Filled Dynamically -->
+      </div>
+
+    </div>
+
+    <div class="sub-category-of-manin-elements commonstyling">
+      <!-- Sub Category of images goes here  -->
+      <div style="width: 2000px; height: 100px;" class="inner-div-option-image" id="sub_category_image_file_list">
+        <!---
+        <img src="..\image_store\MensCollections\CasualWearCollections\img1.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img2.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img3.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img4.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img5.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img1.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img4.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img5.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img1.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img4.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img5.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img1.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img4.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img5.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="..\image_store\MensCollections\CasualWearCollections\img1.jpg" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        -->
+      </div>
+    </div>
+
+    <div class="options-for-editing-the-image commonstyling">
+      <!-- Options of editing the image -->
+      <span class="glyphicon glyphicon-resize-small common_glyphicon" data-toggle="tooltip" title="Reduce Size" id="reduce_size_glyphicon"></span>
+      <span class="glyphicon glyphicon-resize-full common_glyphicon" data-toggle="tooltip" title="Increase Size" id="increase_size_glyphicon"></span>
+      <span class="fa fa-rotate-left common_glyphicon" data-toggle="tooltip" title="Rotate Left" id="rotate_left_glyphicon"></span>
+      <span class="fa fa-rotate-right common_glyphicon" data-toggle="tooltip" title="Rotate Right" id="rotate_right_glyphicon"></span>
+      <span class="glyphicon glyphicon-arrow-left common_glyphicon" data-toggle="tooltip" title="Move Left" id="move_left_glyphicon"></span>
+      <span class="glyphicon glyphicon-arrow-right common_glyphicon" data-toggle="tooltip" title="Move Right" id="move_right_glyphicon"></span>
+      <span class="glyphicon glyphicon-arrow-up common_glyphicon" data-toggle="tooltip" title="Move Up" id="move_up_glyphicon"></span>
+      <span class="glyphicon glyphicon-arrow-down common_glyphicon" data-toggle="tooltip" title="Move Down" id="move_down_glyphicon"></span>
+      <span class="glyphicon glyphicon-resize-vertical common_glyphicon" data-toggle="tooltip" title="Resize Vertical" id="resize_image_vertical"></span>
+      <span class="glyphicon glyphicon-resize-horizontal common_glyphicon" data-toggle="tooltip" title="Resize Horizontal" id="resize_image_horizontal"></span>
+      <span class="glyphicon glyphicon-remove common_glyphicon" data-toggle="tooltip" title="Delete Item" id="delete_selected_item"></span>
+      <span class="glyphicon glyphicon-saved common_glyphicon" data-toggle="tooltip" title="Save Design" id="save_complete_design"></span>
+
+    </div>
+
+    <div class="main-target-image commonstyling" id="mainimage">
+      <!-- Main Traget Image -->
+      <img src="../image_store/MainTarget2.png" width="400px" height="400px" alt="Image Not Found" class="target-image">
+    </div>
+
+    <div class="image-options-to-choose commonstyling">
+      <!--  Image Options to Choose from -->
+      <div style="width: inherit; height: 200px;" class="inner-div-option-image" onload="initialize_properties_of_image_elements(event)">
+
+        <img src="../image_store/Web1.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web2.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web3.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web4.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web5.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web6.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web4.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web5.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web6.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web1.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web2.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web3.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web4.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web5.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web6.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web4.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web5.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web6.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web5.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web6.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web4.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web5.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+        <img src="../image_store/Web6.png" width="100px" height="100px" alt="Image Not Found" class="option-image-class" />
+
+      </div>
+    </div>
+    <script src="/js/CSSGridTryoutFunctionality.js" charset="utf-8"></script>
+</body>
+
+</html>

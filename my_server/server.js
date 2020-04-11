@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 const port = 38877;
 
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + '/index.html')
+  res.sendFile(__dirname + '/CSSGridTryoutFunctionality.html')
 })
 
 app.get('/filelist',function(req,res){
@@ -22,12 +22,23 @@ app.get('/filelist',function(req,res){
 })
 
 app.get('/main_image_file_list', function(req,res){
-
+  console.log("Main Categroy Image load request recived");
+  
   response_json_data = [];
   read_directory_recursively(path.join(__dirname,'public'), "MainImage");
+  console.log(response_json_data);
+  
   res.send(response_json_data);
 })
 
+app.get('/sub_category_image_file_list', function(req,res){
+  console.log("SubCategory Image Load request recived");
+  
+  response_json_data = [];
+  read_directory_recursively(path.join(__dirname,'public'), "");
+  console.log(response_json_data);
+  res.send(response_json_data);
+})
 
 
 function read_directory_recursively(directoryPath, pattern_to_fetch) {
@@ -50,6 +61,7 @@ function read_directory_recursively(directoryPath, pattern_to_fetch) {
       }
       else
       { 
+        if(!file.toString().match(/MainImage/g) && file.toString().match(/jpeg|jpg|png/g)) 
         response_json_data.push((directoryPath + '/' + file).replace(common_pattern_remove,''));
       }
     }
