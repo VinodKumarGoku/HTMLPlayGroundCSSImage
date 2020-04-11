@@ -7,7 +7,7 @@ var response_json_data = [];
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-const port = 38877;
+const port = 1804;
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + '/CSSGridTryoutFunctionality.html')
