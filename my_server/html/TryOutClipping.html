@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <canvas id="canvas" width="400" height="400"></canvas>
+  <img src="../image_store/Part2.png" alt="" width="200" height="200">
+  <div style="display:none;">
+    <img id="source" src="../image_store/Part3.png" width="300" height="227">
+  </div>
+  <script type="text/javascript">
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const image = document.getElementById('source');
+
+    image.addEventListener('load', e => {
+      ctx.drawImage(image, 10, 10);
+      ctx.drawImage(image, 100, 100);
+      ctx.drawImage(image, 50, 100);
+      //ctx.fillStyle = "white";
+      //ctx.fillRect(150, 50, 200, 80);
+    });
+
+    var imgData = canvas.toDataURL();
+    imgData.replace('data:image/png;base64,', '');
+    console.log(imgData);
+    console.log(imgData.replace('data:image/png;base64,', ''));
+
+    var url = "http://localhost:42137/save_image";
+
+    var data = {};
+    data.firstname = imgData;
+    var json = JSON.stringify(data);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xhr.onload = function() {
+      var users = JSON.parse(xhr.responseText);
+      if (xhr.readyState == 4 && xhr.status == "201") {
+        console.table(users);
+      } else {
+        console.error(users);
+      }
+    }
+    xhr.send(json);
+  </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-var detination_url = "http://localhost:38877";
+var detination_url = "http://localhost:1804";
 var xhrrequest;
 //var main_category_div_element = document.getElementById('main_category_images');
 var main_category_div_element;

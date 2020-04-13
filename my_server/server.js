@@ -2,18 +2,22 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
+var bodyParser = require("body-parser");
 
 // Server Listening Port Value 
-const port = 38877;
+const port = 1804;
 
 // Response Data JSon to send to client
 var response_json_data = [];
 
-
-app.use(express.static(path.join(__dirname, 'public')))
+// Middleware usage for express
+app.use(express.static(path.join(__dirname, 'public')));
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + '/CSSGridTryoutFunctionality.html')
+  res.sendFile(__dirname + '/html/CSSGridTryoutFunctionality.html')
 })
 
 app.get('/filelist',function(req,res){
@@ -43,6 +47,15 @@ app.get('/sub_category_image_file_list', function(req,res){
   res.send(response_json_data);
 })
 
+app.post('/save_image', function(req,res){
+  var query1 = req.body.image_encodede_data;
+  //console.log(req.body);
+  
+})
+
+app.get('/canvas_data',function(req,res){
+  res.sendFile(__dirname + '/html/TryOutClipping.html');
+})
 
 function read_directory_recursively(directoryPath, pattern_to_fetch) {
 
