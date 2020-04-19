@@ -170,7 +170,12 @@ function image_operation_reduce_image_size(event) {
   
   // Save the design and exit
   function image_operation_save_completed_design(event) {
+    console.log("Save the design to server");
+    
     var current_selected_element = document.getElementById(current_selected_element_id);
     current_selected_element.style.border = 'none';
+
+    // Call Image Transfer API
+    send_image_data_to_server('mainimage');
   }
   

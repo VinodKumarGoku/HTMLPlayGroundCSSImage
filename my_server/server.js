@@ -21,11 +21,9 @@ app.get("/", function(req, res) {
 })
 
 app.get('/filelist',function(req,res){
-
   response_json_data = [];
   read_directory_recursively(path.join(__dirname,'public'), "");
   res.send(response_json_data);
-
 })
 
 app.get('/main_image_file_list', function(req,res){
@@ -48,14 +46,21 @@ app.get('/sub_category_image_file_list', function(req,res){
 })
 
 app.post('/save_image', function(req,res){
-  var query1 = req.body.image_encodede_data;
-  //console.log(req.body);
+  console.log("Recieved post request");
+  
+  //var query1 = req.body.payload;
+  console.log(req.body.payload);
   
 })
 
-app.get('/canvas_data',function(req,res){
-  res.sendFile(__dirname + '/html/TryOutClipping.html');
+app.get('/send_image_server',function(req,res){
+  res.sendFile(__dirname + '/html/ImageDataSendTransfer.html');
 })
+
+app.get('/get_image_data',function(req,res){
+  res.sendFile(__dirname + '/html/sample.html')
+});
+
 
 function read_directory_recursively(directoryPath, pattern_to_fetch) {
 
