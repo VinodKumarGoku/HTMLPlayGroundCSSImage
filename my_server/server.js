@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const fs = require('fs');
 var bodyParser = require("body-parser");
+var mongoose = require('./javascripts/MongooseAPIConnection.js');
 
 // Server Listening Port Value 
 const port = 1804;
@@ -60,6 +61,12 @@ app.get('/send_image_server',function(req,res){
 app.get('/get_image_data',function(req,res){
   res.sendFile(__dirname + '/html/sample.html')
 });
+
+app.post('/save_image_location_db', function(req,res){
+  console.log(req.body.image_location);
+  res.send("200 Ok");
+  mongoose.createenrty_picture(req.body.image_location);
+})
 
 
 function read_directory_recursively(directoryPath, pattern_to_fetch) {
