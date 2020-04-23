@@ -14,14 +14,15 @@ var save_complete_design_glyphicon;
 var div_contianer_id_to_url_mapping = [
         'main_category_div_element',
         'sub_category_image_file_list',
-        'optinal_image_section'
+        'optinal_image_section',
+        'main_target_image_conatiner'
       ];
 var url_fetch_address = [
         '/main_image_file_list', 
         '/sub_category_image_file_list',
-        '/sub_category_image_file_list'
+        '/sub_category_image_file_list',
+        '/main_target_image'
       ];
-
 
 
 // Make all elements with class option-image-class draggable
@@ -49,7 +50,6 @@ function initialisation_all_dyamic_content(event) {
 
   retrieve_dynamic_content(event, div_contianer_id_to_url_mapping, url_fetch_address);
 }
-
 
 
 function initialisation_main_category_images(event) {

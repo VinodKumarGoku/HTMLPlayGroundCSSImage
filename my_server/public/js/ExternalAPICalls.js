@@ -43,6 +43,12 @@ function processresponse_server(event) {
 
 function create_image_filed_Set_properties(image_object,div_element_id_to_append)
 {
+    if(div_element_id_to_append == 'main_target_image_conatiner')
+    {
+        main_target_image_construction(image_object,div_element_id_to_append);
+        return;
+    }
+
     // Modify the response by removing [] ""
     var modified_variable;
     modified_variable = image_object.toString().replace('[','');
@@ -65,7 +71,27 @@ function create_image_filed_Set_properties(image_object,div_element_id_to_append
 
     new_div_element.appendChild(image_to_append);
     main_category_div_element.appendChild(new_div_element);
+}
 
+function main_target_image_construction(image_object,div_element_id_to_append)
+{
+        // Modify the response by removing [] ""
+        var modified_variable;
+        modified_variable = image_object.toString().replace('[','');
+        modified_variable = modified_variable.toString().replace(']','');
+    
+        // Create new image and create new properties for the same
+        var image_to_append = new Image();
+ 
+        image_to_append.src = modified_variable.toString().replace('"','').toString().replace('"','');
+        image_to_append.alt = 'Image Not Found';
+        image_to_append.style.margin = '2px';
+        image_to_append.classList.add('option-image-class');
+    
+        // Get the main category div element and appendchild to it
+        main_category_div_element = document.getElementById(div_element_id_to_append);
+        main_category_div_element.appendChild(image_to_append);
+    
 }
 
 

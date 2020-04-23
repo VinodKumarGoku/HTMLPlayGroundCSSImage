@@ -46,6 +46,23 @@ app.get('/sub_category_image_file_list', function(req,res){
   res.send(response_json_data);
 })
 
+app.get('/main_target_image', async function(req,res){
+  console.log("Main target Image Request Recived");
+  
+  response_json_data = [];
+  await mongoose.get_data_from_main_target_image_collection().then(main_target_image_db => {
+                                              console.log("In Server js script " + main_target_image_db);
+                                              main_target_image_db.forEach(item => {
+                                                response_json_data.push(item);
+                                              });
+                                              //response_json_data.push(main_target_image_db);
+                                              });
+  
+  //read_directory_recursively(path.join(__dirname,'public'), "Main_Target_Image");
+  //console.log(response_json_data);
+  res.send(response_json_data);
+})
+
 app.post('/save_image', function(req,res){
   console.log("Recieved post request");
   
