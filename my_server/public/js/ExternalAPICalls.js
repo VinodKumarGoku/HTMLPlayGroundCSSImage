@@ -81,7 +81,7 @@ function main_target_image_construction(image_object,div_element_id_to_append)
         modified_variable = modified_variable.toString().replace(']','');
     
         // Create new image and create new properties for the same
-        var image_to_append = new Image();
+        var image_to_append = new Image(400,400);
  
         image_to_append.src = modified_variable.toString().replace('"','').toString().replace('"','');
         image_to_append.alt = 'Image Not Found';

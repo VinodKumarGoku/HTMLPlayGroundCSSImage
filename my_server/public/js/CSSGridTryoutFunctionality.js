@@ -45,6 +45,7 @@ function initialize_properties_of_image_elements(event) {
 
 }
 
+// Main Function to retrive and fill all dynamic content
 function initialisation_all_dyamic_content(event) {
   console.log("Initailising All Dynamic Content From Server");
 

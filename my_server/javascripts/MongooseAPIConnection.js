@@ -14,6 +14,8 @@ var category_main_section = new mongoose.Schema({
   });
 
 var CategoryMain = mongoose.model('category_main_section', category_main_section);
+var CategoryMainSectionOptions = mongoose.model('category_main_section_options', category_main_section);
+var CategorySubSectionOptions = mongoose.model('category_sub_sections_options', category_main_section);
 
 module.exports = {
 
@@ -24,10 +26,24 @@ module.exports = {
       silence.save();
   },
 
-  get_data_from_main_target_image_collection: async function() {
-    console.log("Starting to find data from main element section");
+  get_data_from_main_target_image_collection: async function(section_name) {
+    //console.log("Starting to find data from main element section");
     var list_of_elements = [];
-    var queryoperation = CategoryMain.find();
+    var queryoperation;
+    if(section_name == 'MainTargetImage')
+    { 
+      queryoperation = CategoryMain.find(); 
+    }
+    else if(section_name == 'MainSectionOptions')
+    { 
+      //console.log("Reached Here");
+      
+      queryoperation = CategoryMainSectionOptions.find(); 
+    }
+    else 
+    { 
+      queryoperation = CategorySubSectionOptions.find(); 
+    }
 
     /*
     queryoperation.select({name: true}).
@@ -53,7 +69,12 @@ module.exports = {
                                         });
     //console.log(list_of_documents);
     return new Promise((resolve,reject) => {
-      if(full_complete)resolve(list_of_documents);
+      if(full_complete)
+      {
+        resolve(list_of_documents);
+        //console.log("Sending Prmoise for docs " + list_of_documents);
+        
+      }
       else reject('Operation Failed')
     });
     

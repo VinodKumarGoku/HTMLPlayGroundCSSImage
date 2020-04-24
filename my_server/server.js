@@ -27,39 +27,62 @@ app.get('/filelist',function(req,res){
   res.send(response_json_data);
 })
 
-app.get('/main_image_file_list', function(req,res){
-  console.log("Main Categroy Image load request recived");
+app.get('/main_image_file_list', async function(req,res){
+  //console.log("Main Categroy Image load request recived");
   
-  response_json_data = [];
-  read_directory_recursively(path.join(__dirname,'public'), "MainImage");
+  var response_json_data1 = [];
+  //read_directory_recursively(path.join(__dirname,'public'), "MainImage");
   //console.log(response_json_data);
+    await mongoose.get_data_from_main_target_image_collection('MainSectionOptions').then(main_target_image_db => {
+      main_target_image_db.forEach(item => {
+      response_json_data1.push(item);
+      });
+    });
   
-  res.send(response_json_data);
+  res.send(response_json_data1);
 })
 
-app.get('/sub_category_image_file_list', function(req,res){
-  console.log("SubCategory Image Load request recived");
+app.get('/sub_category_image_file_list', async function(req,res){
+  //console.log("SubCategory Image Load request recived");
   
-  response_json_data = [];
-  read_directory_recursively(path.join(__dirname,'public'), "");
+  var response_json_data2 = [];
+  await mongoose.get_data_from_main_target_image_collection('SubSection').then(main_target_image_db => {
+    main_target_image_db.forEach(item => {
+      response_json_data2.push(item);
+    });
+  });
+  //read_directory_recursively(path.join(__dirname,'public'), "");
   //console.log(response_json_data);
-  res.send(response_json_data);
+  res.send(response_json_data2);
 })
 
 app.get('/main_target_image', async function(req,res){
-  console.log("Main target Image Request Recived");
+  //console.log("Main target Image Request Recived");
   
+  var response_json_data3 = [];
+  
+  await mongoose.get_data_from_main_target_image_collection('MainTargetImage').then(main_target_image_db => {
+                                                main_target_image_db.forEach(item => {
+                                                  response_json_data3.push(item);
+                                                });
+                                              });
+  //console.log("main_target_image " + response_json_data);
+  
+  res.send(response_json_data3);
+})
+
+// Fetching data from db based on Section Type
+app.post('/fetch_image_location_from_db', async function(req,res) {
   response_json_data = [];
-  await mongoose.get_data_from_main_target_image_collection().then(main_target_image_db => {
-                                              console.log("In Server js script " + main_target_image_db);
-                                              main_target_image_db.forEach(item => {
-                                                response_json_data.push(item);
-                                              });
-                                              //response_json_data.push(main_target_image_db);
-                                              });
+  console.log("Fetching image location data from server for image section " + req.body.image_section_name);
   
-  //read_directory_recursively(path.join(__dirname,'public'), "Main_Target_Image");
-  //console.log(response_json_data);
+  await mongoose.get_data_from_main_target_image_collection(req.body.image_section_name)
+                                              .then(main_target_image_db => {
+                                                //console.log("In Server js script " + main_target_image_db);
+                                                main_target_image_db.forEach(item => {
+                                                response_json_data.push(item);
+                                                });
+                                              });
   res.send(response_json_data);
 })
 
