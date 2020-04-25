@@ -37,9 +37,6 @@ function initialize_properties_of_image_elements(event) {
   // Initialising for optional images
   initialise_optional_images(event);
 
-  // Initialising for main target images
-  initialise_main_target_image(event);
-
   // Initialising Gyphicons buttons with event listeners
   initialisation_glyphicons(event);
 
@@ -88,12 +85,6 @@ function initialise_optional_images(event) {
   }
 }
 
-// Refactored code for initialisation of main target image
-function initialise_main_target_image(event) {
-  var main_target_image = document.getElementsByClassName("main-target-image");
-  main_target_image[0].addEventListener('drop', drop_optional_image, true);
-  main_target_image[0].addEventListener('dragover', drag_over_optional_image, true);
-}
 
 function initialisation_glyphicons(event) {
   // Iniatilise the variables with element id
