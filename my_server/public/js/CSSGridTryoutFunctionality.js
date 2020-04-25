@@ -28,7 +28,6 @@ var url_fetch_address = [
 // Make all elements with class option-image-class draggable
 // Common declaration to enable event listeners, style
 // properties to optional image elements
-
 function initialize_properties_of_image_elements(event) {
   //console.log("Onload Initialised");
 
@@ -47,20 +46,6 @@ function initialisation_all_dyamic_content(event) {
   console.log("Initailising All Dynamic Content From Server");
 
   retrieve_dynamic_content(event, div_contianer_id_to_url_mapping, url_fetch_address);
-}
-
-
-function initialisation_main_category_images(event) {
-  console.log("initialisation_main_category_images");
-  
-  retrive_filelist(event,'main_category_div_element','/main_image_file_list');
-  retrive_filelist(event,'sub_category_image_file_list','/sub_category_image_file_list');
-}
-
-function initialisation_sub_category_images(event){
-  console.log("initialisation_sub_category_images");
-  
-  retrive_filelist(event,'sub_category_image_file_list','/sub_category_image_file_list');
 }
 
 // Refactored fucntion of onload initialisations

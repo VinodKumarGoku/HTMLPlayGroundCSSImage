@@ -6,7 +6,7 @@ function option_image_drag_started(event) {
   clonenode_option_image = event.target.cloneNode(true);
   console.log("Image Drag Started " + clonenode_option_image);
 
-  if (event.target.parentNode.id == "mainimage") {
+  if (event.target.parentNode.id == "main_target_image_conatiner") {
     last_selected_element_id = event.target.id;
   }
 }
@@ -27,10 +27,15 @@ function drop_optional_image(event) {
   clonenode_option_image.addEventListener('dblclick', select_optional_image_draw_border);
 
   // Section to handle drag and drop of image within the main image target
-  if (last_selected_element_id != undefined && event.target.parentNode.id == "mainimage" && clonenode_option_image.id) {
+  if (last_selected_element_id != undefined && 
+          event.target.parentNode.id == "main_target_image_conatiner" && 
+          clonenode_option_image.id) 
+  {
     var deleteelement = document.getElementById(last_selected_element_id.toString());
     event.target.parentNode.removeChild(deleteelement);
-  } else {
+  } 
+  else 
+  {
     clonenode_option_image.id = idcounter;
     idcounter = idcounter + 1;
   }
@@ -43,14 +48,14 @@ function drag_over_optional_image(event) {
   event.preventDefault();
 }
 
-// Selecting the optional image on the target image whose parent is main mainimage
+// Selecting the optional image on the target image whose parent is main main_target_image_conatiner
 // and placing border ocross the same
 var prev_selected_element_id = 0,
   current_selected_element_id = 1;
 
 function select_optional_image_draw_border(event) {
-  //console.log("Ram4 " + event.target.id);
-  if (event.target.parentNode.id == "mainimage") {
+  console.log("Ram4 " + event.target.id);
+  if (event.target.parentNode.id == "main_target_image_conatiner") {
     console.log("Image selected on target selected " + prev_selected_element_id + " and " + event.target.id);
     current_selected_element_id = event.target.id;
     if (current_selected_element_id != prev_selected_element_id) {

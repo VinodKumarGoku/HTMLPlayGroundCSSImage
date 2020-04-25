@@ -176,6 +176,6 @@ function image_operation_reduce_image_size(event) {
     current_selected_element.style.border = 'none';
 
     // Call Image Transfer API
-    send_image_data_to_server('mainimage');
+    send_image_data_to_server('main_target_image_conatiner');
   }
   
